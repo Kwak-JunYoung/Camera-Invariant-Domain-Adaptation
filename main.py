@@ -3,6 +3,18 @@ from accelerate import Accelerator
 from torch.utils.data import Dataset, DataLoader
 from data_loaders import CustomDataset
 import numpy as np
+import wandb
+import torch
+import random 
+
+# Random seed
+def set_seed(seed: int):
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+
+    torch.backends.cudnn.deterministic = True
 
 # Obtain information of the model
 def get_model_info(config, model_name):
@@ -44,6 +56,10 @@ def get_print_args(test_aucs, test_accs, config, train_config, model_config):
 
     return print_args
 
+def initialize_wandb(params_str):
+    wandb.init(project="CLinKT", entity="kwakjunyoung")
+    wandb.run.name = params_str
+    wandb.run.save()
 
 def main():
     dataset = CustomDataset(csv_file='./train_source.csv')
