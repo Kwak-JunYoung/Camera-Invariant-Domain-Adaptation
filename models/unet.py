@@ -28,6 +28,8 @@ class UNet(nn.Module):
 
         self.conv_last = nn.Conv2d(64, 13, 1) # 12개 class + 1 background
 
+        self.loss_fn = torch.nn.CrossEntropyLoss()
+
     def forward(self, x):
         conv1 = self.dconv_down1(x)
         x = self.maxpool(conv1)
@@ -56,3 +58,8 @@ class UNet(nn.Module):
         out = self.conv_last(x)
 
         return out
+
+    def loss(self, outputs, masks):
+        loss = self.loss_fn(outputs, masks.squeeze(1))
+
+        return loss
