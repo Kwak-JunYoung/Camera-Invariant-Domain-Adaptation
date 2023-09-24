@@ -115,7 +115,11 @@ def main(config):
 
     model = get_model_info(config, device, model_name)
 
-    model = torch.nn.DataParallel(model).to(device)
+    n_gpu = torch.cuda.device_count()
+    if n_gpu > 1:
+        model = torch.nn.DataParallel(model).to(device)
+    else:
+        model = model.to(device)
 
     if optimizer == "adam":
         opt = Adam(model.parameters(), lr=learning_rate)
