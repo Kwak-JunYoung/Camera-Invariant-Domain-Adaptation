@@ -3,8 +3,6 @@ import torch
 
 from tqdm import tqdm
 
-from data_loaders import dataloader
-
 if torch.cuda.is_available():
     torch.set_default_tensor_type(torch.cuda.FloatTensor)
 
@@ -43,7 +41,7 @@ def model_train(
 
             epoch_loss += loss.item()
 
-        print(f'Epoch {epoch+1}, Loss: {epoch_loss/len(dataloader)}')
+        print(f'Epoch {epoch+1}, Loss: {epoch_loss/len(train_dataloader)}')
 
     with torch.no_grad():
         model.eval()
