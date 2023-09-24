@@ -79,7 +79,7 @@ def get_print_args(test_aucs, test_accs, config, train_config, model_config):
 
 
 def initialize_wandb(params_str):
-    wandb.init(project="SAIT", entity="kwakjunyoung")
+    wandb.init(project="Camera-Invariant Domain Adaptation", entity="kwakjunyoung")
     wandb.run.name = params_str
     wandb.run.save()
 
