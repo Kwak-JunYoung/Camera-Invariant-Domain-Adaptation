@@ -34,7 +34,7 @@ class CustomDataset(Dataset):
             return image
 
         mask_path = self.data.iloc[idx, 2]
-        img_path = img_path.replace('./', './dataset/')
+        mask_path = mask_path.replace('./', './dataset/')
         mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
         mask[mask == 255] = 12  # 배경을 픽셀값 12로 간주
 
