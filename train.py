@@ -8,7 +8,7 @@ if torch.cuda.is_available():
 
 import numpy as np
 from PIL import Image
-from utils import rle_encode
+from utils.utils import rle_encode
 
 
 def model_train(
