@@ -6,8 +6,8 @@ import pandas as pd
 
 
 class CustomDataset(Dataset):
-    def __init__(self, csv_file, transform=None, infer=False):
-        self.data = pd.read_csv(csv_file)
+    def __init__(self, csv_file, infer=False):
+        
         self.transform = A.Compose(
             [
                 A.Resize(224, 224),
@@ -15,6 +15,7 @@ class CustomDataset(Dataset):
                 ToTensorV2()
             ]
         )
+        
         self.infer = infer
 
     def __len__(self):
