@@ -36,7 +36,7 @@ def set_seed(seed: int):
 def get_model_info(config, device, model_name):
     if model_name == "unet":
         model_config = config.unet_config
-        model = UNet().to(device)
+        model = UNet()
     else:
         raise NotImplementedError("model name is not valid")
     return model_config, model
@@ -113,6 +113,8 @@ def main(config):
         accelerator, test_file_dir, False, True, 4, batch_size)
 
     model = get_model_info(config, device, model_name)
+
+    model = torch.nn.DataParallel(model).to(device)
 
     if optimizer == "adam":
         opt = torch.optim.Adam(model.parameters(), lr=learning_rate)
