@@ -7,6 +7,8 @@ import pandas as pd
 
 class CustomDataset(Dataset):
     def __init__(self, csv_file, infer=False):
+        super().__init__()
+
         self.data = pd.read_csv(csv_file)
 
         self.transform = A.Compose(
