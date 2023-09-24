@@ -35,7 +35,7 @@ def set_seed(seed: int):
 
 def get_model_info(config, device, model_name):
     if model_name == "unet":
-        model_config = config["models"]["unet"]
+        model_config = config.unet_config
         model = UNet().to(device)
     else:
         raise NotImplementedError("model name is not valid")
