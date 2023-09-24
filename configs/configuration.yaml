@@ -1,0 +1,26 @@
+dataset_path: "./dataset"
+
+checkpoint_dir: .ckpts
+seed: 12405
+
+unet_config:
+  train_source:
+    num_blocks: 4
+    dropout: 0.5
+    mask_prob: 0.5
+    negative_prob: 1.0
+
+train_config:
+  l2: 0.0
+  seq_len: 100
+  batch_size: 16
+  eval_batch_size: 16
+  num_epochs: 20
+  learning_rate: 0.001
+  optimizer: adam
+
+  ## Model Save
+  save_model: False
+  save_epochs: 1
+  save_model_name: "tmp"
+  log_path: "logs"
