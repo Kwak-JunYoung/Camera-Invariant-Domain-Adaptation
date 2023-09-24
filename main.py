@@ -113,7 +113,7 @@ def main(config):
     test_dataset, test_data_loader = get_data_info(
         accelerator, test_file_dir, False, True, 4, batch_size)
 
-    model = get_model_info(config, device, model_name)
+    model_config, model = get_model_info(config, device, model_name)
 
     n_gpu = torch.cuda.device_count()
     if n_gpu > 1:
