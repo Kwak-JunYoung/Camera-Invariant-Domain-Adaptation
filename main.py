@@ -126,8 +126,8 @@ def main(config):
 
     model, opt = accelerator.prepare(model, opt)
 
-    result = model_train(model, opt, train_data_loader,
-                         test_data_loader, config, accelerator)
+    result = model_train(model, device, opt, train_data_loader,
+                         test_data_loader, config)
 
     submit = pd.read_csv('./dataset/sample_submission.csv')
     submit['mask_rle'] = result
