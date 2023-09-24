@@ -45,8 +45,8 @@ def get_model_info(config, device, model_name):
 
 def get_data_info(accelerator, file_dir, shuffle, infer, num_workers, batch_size):
     dataset = CustomDataset(csv_file=file_dir, infer=infer)
-    dataloader = accelerator.prepare(DataLoader(dataset, batch_size=batch_size,
-                                                shuffle=shuffle, num_workers=num_workers))
+    dataloader = accelerator.prepare(DataLoader(dataset, batch_size,
+                                                shuffle, num_workers))
     return dataset, dataloader
 
 # Get test results to record in wandb
