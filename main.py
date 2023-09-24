@@ -13,10 +13,11 @@ import os
 import pandas as pd
 import argparse
 
+
 # https://huggingface.co/docs/transformers/v4.32.0/ko/accelerate
 from accelerate import Accelerator
 from utils.file_io import PathManager
-
+from torch.optim import Adam
 from train import model_train
 
 # Random seed
@@ -36,7 +37,7 @@ def set_seed(seed: int):
 def get_model_info(config, device, model_name):
     if model_name == "unet":
         model_config = config.unet_config
-        model = UNet()
+        model = UNet("nothing")
     else:
         raise NotImplementedError("model name is not valid")
     return model_config, model
@@ -117,7 +118,7 @@ def main(config):
     model = torch.nn.DataParallel(model).to(device)
 
     if optimizer == "adam":
-        opt = torch.optim.Adam(model.parameters(), lr=learning_rate)
+        opt = Adam(model.parameters(), lr=learning_rate)
 
     model, opt = accelerator.prepare(model, opt)
 
