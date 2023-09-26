@@ -43,6 +43,7 @@ def model_train(
 
         print(f'Epoch {epoch+1}, Loss: {epoch_loss/len(train_dataloader)}')
 
+    # testing loop
     with torch.no_grad():
         model.eval()
         result = []
