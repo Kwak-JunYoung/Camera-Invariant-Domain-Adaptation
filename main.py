@@ -21,6 +21,7 @@ from torch.optim import Adam
 from train import model_train
 
 # Random seed
+torch.multiprocessing.set_start_method('spawn')
 
 
 def set_seed(seed: int):
