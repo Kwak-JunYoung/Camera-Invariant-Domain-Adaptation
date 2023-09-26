@@ -16,6 +16,8 @@ class CustomDataset(Dataset):
         self.normalize = MyNormalization()
         self.flip = RandomFlip()
         self.transform = A.Compose(
+            A.Resize(224, 224),
+
             [
                 A.OneOf([
                     A.VerticalFlip(p=0.5),
