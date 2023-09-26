@@ -29,7 +29,7 @@ class CustomDataset(Dataset):
                     A.GridDistortion(p=0.5),
                     A.OpticalDistortion(distort_limit=2, shift_limit=0.5, p=1),
                 ], p=0.5),
-                A.resize(224, 224)
+                A.Resize(224, 224)
             ]
         )
         
