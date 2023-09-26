@@ -50,7 +50,7 @@ def get_data_info(accelerator, file_dir, shuffle, infer, num_workers, batch_size
 
     dataloader = accelerator.prepare(DataLoader(dataset=dataset, batch_size=batch_size,
                                                 shuffle=shuffle, num_workers=num_workers, generator=torch.Generator(device=device)))
-    return dataset, dataloader
+    return dataloader
 
 # Get test results to record in wandb
 
@@ -109,11 +109,11 @@ def main(config):
     optimizer = train_config.optimizer
 
     train_file_dir = './dataset/train_source.csv'
-    train_dataset, train_data_loader = get_data_info(
+    train_data_loader = get_data_info(
         accelerator, train_file_dir, True, False, 4, batch_size, device=device)
 
     test_file_dir = './dataset/test.csv'
-    test_dataset, test_data_loader = get_data_info(
+    test_data_loader = get_data_info(
         accelerator, test_file_dir, False, True, 4, batch_size, device=device)
 
     model_config, model = get_model_info(config, device, model_name)
