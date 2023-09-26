@@ -21,9 +21,6 @@ from torch.optim import Adam
 from train import model_train
 
 # Random seed
-torch.multiprocessing.set_start_method('spawn')
-
-
 def set_seed(seed: int):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
@@ -136,6 +133,7 @@ def main(config):
 
 
 if __name__ == "__main__":
+    torch.multiprocessing.set_start_method('spawn')
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--model_name",
