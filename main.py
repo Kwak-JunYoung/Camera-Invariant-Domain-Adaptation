@@ -44,6 +44,8 @@ def get_model_info(config, device, model_name):
 
 
 def get_data_info(accelerator, file_dir, shuffle, infer, num_workers, batch_size, device):
+    # Train: Shuffle: True, Infer: False
+    # Test: Shuffle: False, Infer: True
     dataset = CustomDataset(csv_file=file_dir, infer=infer)
 
     dataloader = accelerator.prepare(DataLoader(dataset=dataset, batch_size=batch_size,
