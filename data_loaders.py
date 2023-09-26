@@ -17,14 +17,14 @@ class CustomDataset(Dataset):
         self.flip = RandomFlip()
         self.transform = A.Compose(
             [
-                A.one_of([
+                A.OneOf([
                     A.vertical_flip(p=0.5),
                     A.horizontal_flip(p=0.5),
                     A.RandomRotate90(p=1),
                     A.Transpose(p=0.5),
                 ], p=0.5),
 
-                A.one_of([
+                A.OneOf([
                     A.ElasticTransform(p=1, alpha=120, sigma=120 * 0.05, alpha_affine=120 * 0.03),
                     A.GridDistortion(p=0.5),
                     A.OpticalDistortion(distort_limit=2, shift_limit=0.5, p=1),
