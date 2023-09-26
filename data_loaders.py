@@ -18,8 +18,8 @@ class CustomDataset(Dataset):
         self.transform = A.Compose(
             [
                 A.OneOf([
-                    A.vertical_flip(p=0.5),
-                    A.horizontal_flip(p=0.5),
+                    A.VerticalFlip(p=0.5),
+                    A.HorizontalFlip(p=0.5),
                     A.RandomRotate90(p=1),
                     A.Transpose(p=0.5),
                 ], p=0.5),
