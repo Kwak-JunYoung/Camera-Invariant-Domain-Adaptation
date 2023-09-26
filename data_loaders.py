@@ -17,6 +17,7 @@ class CustomDataset(Dataset):
         self.flip = RandomFlip()
         self.transform = A.Compose(
             [
+                A.Resize(224, 224),
                 A.OneOf([
                     A.VerticalFlip(p=0.25),
                     A.HorizontalFlip(p=0.25),
@@ -29,7 +30,6 @@ class CustomDataset(Dataset):
                     A.GridDistortion(p=0.5),
                     A.OpticalDistortion(distort_limit=2, shift_limit=0.5, p=1),
                 ], p=0.5),
-                A.Resize(224, 224)
             ]
         )
         
