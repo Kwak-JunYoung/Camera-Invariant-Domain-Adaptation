@@ -17,14 +17,6 @@ class CustomDataset(Dataset):
         self.flip = RandomFlip()
         self.transform = A.Compose(
             [
-                
-                A.OneOf([
-                    A.VerticalFlip(p=0.25),
-                    A.HorizontalFlip(p=0.25),
-                    A.RandomRotate90(p=0.25),
-                    A.Transpose(p=0.25),
-                ], p=0.5),
-
                 A.OneOf([
                     A.ElasticTransform(p=1, alpha=120, sigma=120 * 0.05, alpha_affine=120 * 0.03),
                     A.GridDistortion(p=0.5),
