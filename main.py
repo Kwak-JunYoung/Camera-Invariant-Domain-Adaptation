@@ -60,19 +60,15 @@ def get_print_args(test_aucs, test_accs, config, train_config, model_config):
     data_name = config.data_name
 
     test_auc = np.mean(test_aucs)
-    test_auc_std = np.std(test_aucs)
     test_acc = np.mean(test_accs)
-    test_acc_std = np.std(test_accs)
 
-    print("\n5-fold CV Result")
-    print("AUC\tACC\tRMSE")
+    print("\nResult")
+    print("AUC\tACC")
     print("{:.5f}\t{:.5f}".format(test_auc, test_acc))
 
     print_args = dict()
     print_args["auc"] = round(test_auc, 4)
-    print_args["auc_std"] = round(test_auc_std, 4)
     print_args["acc"] = round(test_acc, 4)
-    print_args["acc_std"] = round(test_acc_std, 4)
 
     print_args['Model'] = model_name
     print_args['Dataset'] = data_name
