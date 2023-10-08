@@ -1,4 +1,6 @@
 from models.unet import UNet
+from models.unet3plus import UNet3Plus
+from models.segnet import SegNet
 from torch.utils.data import Dataset, DataLoader
 from data_loaders import CustomDataset
 import numpy as np
@@ -36,6 +38,12 @@ def get_model_info(config, device, model_name):
     if model_name == "unet":
         model_config = config.unet_config
         model = UNet("nothing")
+    elif model_name == "unet3plus":
+        model_config = config.unet3plus_config
+        model = UNet3Plus("nothing")
+    elif model_name == "segnet":
+        model_config = config.segnet_config
+        model = SegNet("nothing")
     else:
         raise NotImplementedError("model name is not valid")
     return model_config, model
@@ -193,6 +201,10 @@ if __name__ == "__main__":
 
     if args.model_name == "unet":
         cfg.unet_config = cfg.unet_config[cfg.data_name]
+    if args.model_name == "segnet":
+        cfg.segnet_config = cfg.segnet_config[cfg.data_name]
+    if args.model_name == "unet3plus":
+        cfg.unet3plus_config = cfg.unet3plus_config[cfg.data_name]                
 
     cfg.freeze()
 
