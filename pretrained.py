@@ -33,7 +33,9 @@ submit = pd.read_csv('./dataset/sample_submission.csv')
 
 result = []
 for i in tqdm(range(len(df))):
-    image = Image.open(df['img_path'][i])
+    img_path = df['img_path'][i].replace('./', './dataset/')
+    image = Image.open(img_path)
+    
     # image resize
     image = image.resize((960, 540))
     
