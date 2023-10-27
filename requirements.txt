@@ -3,3 +3,4 @@ yacs
 iopath
 accelerate
 transformers
+natten
