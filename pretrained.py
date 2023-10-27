@@ -7,6 +7,7 @@ from utils.utils import rle_encode
 import warnings
 warnings.filterwarnings('ignore')
 
+# Load pretrained model
 processor = OneFormerProcessor.from_pretrained("shi-labs/oneformer_ade20k_dinat_large")
 model = OneFormerForUniversalSegmentation.from_pretrained("shi-labs/oneformer_ade20k_dinat_large").to('cuda')
 
