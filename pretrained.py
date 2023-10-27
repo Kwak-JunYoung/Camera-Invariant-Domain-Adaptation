@@ -11,7 +11,7 @@ warnings.filterwarnings('ignore')
 processor = OneFormerProcessor.from_pretrained("shi-labs/oneformer_ade20k_dinat_large")
 model = OneFormerForUniversalSegmentation.from_pretrained("shi-labs/oneformer_ade20k_dinat_large").to('cuda')
 
-df = pd.read_csv('test.csv')
+df = pd.read_csv('./dataset/test.csv')
 df.head()
 
 ade20k_to_12 = {
@@ -29,7 +29,7 @@ ade20k_to_12 = {
     11: [20, 80, 116]
 }
 
-submit = pd.read_csv('./sample_submission.csv')
+submit = pd.read_csv('./dataset/sample_submission.csv')
 
 result = []
 for i in tqdm(range(len(df))):
