@@ -2,3 +2,4 @@ wandb
 yacs
 iopath
 accelerate
+transformers
