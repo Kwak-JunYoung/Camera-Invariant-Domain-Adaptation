@@ -61,7 +61,7 @@ for i in tqdm(range(len(df))):
         else:
             result.append(-1)
 
-submit = pd.read_csv('./sample_submission.csv')
+submit = pd.read_csv('./dataset/sample_submission.csv')
 submit['mask_rle'] = result
 
 submit.to_csv('segformer_pretrain_submit.csv', index=False)
